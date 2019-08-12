@@ -3,7 +3,8 @@ layout: home
 title: Home
 ---
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+#### I am a _Junior Software Developer_ who loves to code and hack.
+I usually prefer Python and vim for programming but I am open-minded.
+I have a strong commitment to open source software and enjoy working
+with Linux but I am also familiar with Windows.
+Please feel free to take a look at my projects on Github.

@@ -18,6 +18,7 @@ body {
   line-height: 1.5;
   font-size: 16px;
   word-wrap: break-word;
+  font-family: serif;
 }
 
 main {
@@ -45,6 +46,19 @@ a:link {
   display:flex;
   justify-content:center;
   align-items:center;
+}
+
+#profileHeader h1 {
+  font-family: monospace;
+}
+
+#profileDescription {
+  display: block;
+  justify-content: space-evenly;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0;
+  font-family: monospace;
 }
 
 #profileSocialLinks ul {
