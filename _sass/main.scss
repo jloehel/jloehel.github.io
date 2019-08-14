@@ -18,7 +18,7 @@ body {
   line-height: 1.5;
   font-size: 16px;
   word-wrap: break-word;
-  font-family: serif;
+  font-family: 'Press Start 2P', cursive;
 }
 
 main {
@@ -48,17 +48,17 @@ a:link {
   align-items:center;
 }
 
-#profileHeader h1 {
-  font-family: monospace;
+#profileDescription h4 {
+  text-align: center;
 }
 
 #profileDescription {
   display: block;
   justify-content: space-evenly;
-  max-width: 600px;
+  text-align: left;
+  max-width: 800px;
   margin: 20px auto;
   padding: 0;
-  font-family: monospace;
 }
 
 #profileSocialLinks ul {
