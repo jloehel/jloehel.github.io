@@ -1,0 +1,39 @@
+projects:
+  - slug: tidymol-python
+    name: "tidymol-python"
+    repo: https://github.com/tidymol/tidymol-python
+    image: /assets/images/projects/tidymol-python.svg
+    status: active
+    language: Python
+    license: MIT
+    authors: [jloehel, alba-vcl]
+    links: []
+    description:
+      en: "Tools for sorting and comparing molden files and extracting data from them, aimed at computational chemistry workflows."
+      de: "Werkzeuge zum Sortieren und Vergleichen von molden-Dateien und zum Auslesen ihrer Daten, gedacht für Arbeitsabläufe in der Computerchemie."
+      es: "Herramientas para ordenar y comparar archivos molden y extraer datos de ellos, pensadas para flujos de trabajo de química computacional."
+
+contributions:
+  - slug: rng2doc
+    name: "openSUSE / rng2doc"
+    repo: https://github.com/openSUSE/rng2doc
+    image: /assets/images/projects/rng2doc.svg
+    language: Python
+    license: MIT
+    authors: [tomschr, jloehel]
+    more_authors: https://github.com/openSUSE/rng2doc/graphs/contributors
+    links: []
+    description:
+      en: >-
+        Turns a RELAX NG schema into browsable HTML documentation. Started by
+        Tom Schraitle, who supervised me at the time; I worked on it for my final
+        project as a Fachinformatiker für Anwendungsentwicklung.
+      de: >-
+        Überführt ein RELAX-NG-Schema in durchsuchbare HTML-Dokumentation. Von
+        Tom Schraitle initiiert, der damals auch mein Betreuer war; ich habe im Rahmen
+        meiner Abschlussarbeit zum Fachinformatiker für Anwendungsentwicklung daran
+        mitgearbeitet.
+      es: >-
+        Convierte un esquema RELAX NG en documentación HTML navegable. Iniciado por
+        Tom Schraitle, que además fue mi tutor en aquel momento; colaboré en él durante
+        mi proyecto final de formación como Fachinformatiker für Anwendungsentwicklung.

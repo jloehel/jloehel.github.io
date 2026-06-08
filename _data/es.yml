@@ -1,0 +1,55 @@
+nav:
+  about: "Sobre mí"
+  weblog: "Weblog"
+  software: "Software"
+footer:
+  legal: "Aviso legal"
+  legal_url: "/es/aviso-legal/"
+  privacy: "Aviso de privacidad"
+  privacy_url: "/es/aviso-de-privacidad/"
+  hosted_by: "Alojado por"
+  generated_by: "generado con"
+  created_with: "Creado con"
+  and_mate: "y mate"
+meta:
+  description: "Desarrollador de Python y penetration tester. Linux, código abierto, empaquetado RPM."
+nojs:
+  note: "JavaScript está desactivado, así que faltan algunos detalles: el tema sigue la configuración de tu sistema y los bloques de código no tienen botón de copiar. Todo lo demás funciona."
+software:
+  title: "Software"
+  empty: "Todavía no hay proyectos."
+  source: "Código fuente"
+  more_authors: "otros"
+  contributions: "Contribuciones"
+  status:
+    active: "Activos"
+    maintained: "Mantenidos"
+    archived: "Archivados"
+licenses:
+  title: "Tipografías e iconos"
+  icons: >-
+    Iconos: <a href="https://fontawesome.com/" rel="external">Font Awesome Free</a> %FA_VERSION%
+    — © Fonticons, Inc., con licencia
+    <a href="https://creativecommons.org/licenses/by/4.0/" rel="license external">CC BY 4.0</a>.
+  fonts: >-
+    Tipografías: basadas en
+    <a href="https://github.com/adobe-fonts/source-sans" rel="external">Source Sans 3</a> %SANS_VERSION% y
+    <a href="https://github.com/adobe-fonts/source-code-pro" rel="external">Source Code Pro</a> %SCP_VERSION%
+    (© Adobe, <a href="https://openfontlicense.org/" rel="license external">SIL Open Font License 1.1</a>).
+    Se utilizan en una versión reducida al alfabeto latino y renombrada («JL Sans» / «JL Mono»),
+    ya que la OFL prohíbe que las versiones modificadas usen el nombre reservado «Source».
+weblog:
+  title: "Weblog"
+  empty: "Todavía no hay artículos."
+  reading_time: "min de lectura"
+  not_translated: "Este artículo aún no está traducido y se muestra en inglés."
+  not_translated_short: "solo en inglés"
+  sources: "Fuentes"
+  tags_title: "Etiquetas"
+  all_tags: "Todas las etiquetas"
+  feed: "RSS"
+  feed_title: "Suscribirse al feed"
+  back_to_index: "Volver a la lista"
+  copy_code: "Copiar"
+  code_copied: "Copiado"
+  blogroll: "Blogroll"

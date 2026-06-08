@@ -1,33 +1,93 @@
-
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; img-src 'self' data: https://matomo.loehel.de; style-src 'self'; font-src 'self'; script-src 'self' https://matomo.loehel.de; connect-src 'self' https://matomo.loehel.de">
+    <meta name="color-scheme" content="light dark">
+    <script src="{{ '/assets/js/theme-init.js' | relative_url }}"></script>
+    {% include matomo.html %}
+
+    {%- if site.active_lang == site.default_lang %}
+      {%- assign lang_prefix = "" %}
+    {%- else %}
+      {%- assign lang_prefix = "/" | append: site.active_lang %}
+    {%- endif %}
+    {%- if page.layout == 'post' %}
+      {%- assign meta_desc = page.summary | strip_newlines | truncate: 200 %}
+      {%- assign meta_title = page.title %}
+      {%- capture meta_url %}{{ site.url }}{{ lang_prefix }}{{ page.url }}{% endcapture %}
+      {%- if page.image %}
+        {%- assign meta_image = site.url | append: page.image %}
+      {%- else %}
+        {%- assign meta_image = site.url | append: '/assets/images/profile.jpeg' %}
+      {%- endif %}
+    {%- else %}
+      {%- assign meta_desc = page.description | default: site.data.meta.description %}
+      {%- assign meta_title = page.og_title | default: 'Jürgen Löhel – Home' %}
+      {%- capture meta_url %}{{ page.og_url | default: site.url | append: lang_prefix }}{% endcapture %}
+      {%- assign meta_image = site.url | append: '/assets/images/profile.jpeg' %}
+    {%- endif %}
+
     <meta name="author" content="Jürgen Löhel" />
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="{{ meta_desc | xml_escape }}">
 
-    <script src="https://kit.fontawesome.com/a7ddbef0b1.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ "/assets/images/favicon.ico" | relative_url }}">
+    <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="icon" href="{{ '/assets/favicon-32.png' | relative_url }}" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
+
+    {%- capture nl %}
+{% endcapture -%}
+{%- capture nl_indent %}
+    {% endcapture -%}
+{%- capture i18n_headers %}{% I18n_Headers %}{% endcapture %}
+    {{ i18n_headers | strip | replace: nl, nl_indent }}
+
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/assets/fonts/source-sans-3-400.woff2' | relative_url }}">
+    <link rel="stylesheet" type="text/css" href="{{ '/assets/css/styles.css' | relative_url }}">
+    <noscript><link rel="stylesheet" type="text/css" href="{{ '/assets/css/nojs.css' | relative_url }}"></noscript>
+    <link rel="alternate" type="application/atom+xml" title="Jürgen Löhel — Weblog" href="/feed.xml">
+
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:locale" content="{{ site.data.locales[site.active_lang] }}">
+    {%- for l in site.languages %}{% unless l == site.active_lang %}
+    <meta property="og:locale:alternate" content="{{ site.data.locales[l] }}">
+    {%- endunless %}{% endfor %}
+    <meta property="og:title" content="{{ meta_title | xml_escape }}">
+    <meta property="og:description" content="{{ meta_desc | xml_escape }}">
+    <meta property="og:url" content="{{ meta_url }}">
+    <meta property="og:image" content="{{ meta_image }}">
+    <meta name="twitter:card" content="summary_large_image">
+    {%- if page.layout == 'post' %}
+    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+    {%- for key in page.authors %}
+    <meta property="article:author" content="{{ site.data.authors[key].name | xml_escape }}">
+    {%- endfor %}
+    {%- for t in page.tags %}
+    <meta property="article:tag" content="{{ t | xml_escape }}">
+    {%- endfor %}
+    {%- endif %}
+
     <title>{{ site.title }} .:|:. {{ page.title }}</title>
+    {%- if page.layout == 'post' %}
 
-    <link rel="stylesheet" type="text/css" href="{{ "/assets/css/styles.css" | relative_url }}">
-
-    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Neucha&display=swap" rel="stylesheet">
-
-    <!-- Matomo -->
-    <script>
-      var _paq = window._paq = window._paq || [];
-      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-      _paq.push(["setDoNotTrack", true]);
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      (function() {
-        var u="https://matomo.loehel.de/";
-        _paq.push(['setTrackerUrl', u+'matomo.php']);
-        _paq.push(['setSiteId', '2']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-      })();
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": {{ page.title | jsonify }},
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        "inLanguage": "{{ page.rendered_lang | default: site.active_lang }}",
+        "description": {{ page.summary | strip_newlines | jsonify }},
+        "author": [
+          {%- for key in page.authors %}
+          {"@type": "Person", "name": {{ site.data.authors[key].name | jsonify }}}{% unless forloop.last %},{% endunless %}
+          {%- endfor %}
+        ]
+      }
     </script>
-    <noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="https://matomo.loehel.de/matomo.php?idsite=2&amp;rec=1" style="border:0;" alt="" /></p></noscript>
-    <!-- End Matomo Code -->
+    {%- endif %}
+
+    <script defer src="{{ '/assets/js/nav.js' | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/code.js' | relative_url }}"></script>
   </head>

@@ -1,0 +1,11 @@
+{%- assign p = include.post -%}
+{%- if p.sources and p.sources.size > 0 -%}
+<section class="post-sources">
+          <h2>{{ site.data.weblog.sources }}</h2>
+          <ol>
+            {%- for s in p.sources %}
+            <li><a href="{{ s.url }}" rel="noopener">{{ s.title }}</a>{% if s.note %} <span class="source-note">— {{ s.note }}</span>{% endif %}</li>
+            {%- endfor %}
+          </ol>
+        </section>
+{%- endif -%}

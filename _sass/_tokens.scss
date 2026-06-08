@@ -1,0 +1,50 @@
+// Solarized palette as CSS custom properties + typography/layout tokens.
+
+@mixin light {
+  --bg:           #fdf6e3; // base3
+  --surface:      #eee8d5; // base2
+  --fg:           #657b83; // base00
+  --fg-strong:    #586e75; // base01
+  --fg-muted:     #93a1a1; // base1
+  --border:       #e4ddc7;
+  --accent:       #2aa198; // cyan
+  --accent-hover: #1f8c84;
+  --on-accent:    #fdf6e3;
+}
+
+@mixin dark {
+  --bg:           #002b36; // base03
+  --surface:      #073642; // base02
+  --fg:           #839496; // base0
+  --fg-strong:    #93a1a1; // base1
+  --fg-muted:     #586e75; // base01
+  --border:       #0e3d49;
+  --accent:       #2aa198; // cyan
+  --accent-hover: #35c9bf;
+  --on-accent:    #002b36;
+}
+
+:root {
+  --font-sans: "JL Sans", system-ui, sans-serif;
+  --font-mono: "JL Mono", ui-monospace, monospace;
+  --measure: 46rem;
+  --radius: 10px;
+  --accent-soft: rgba(42, 161, 152, 0.14); // cyan tint for hover/active surfaces
+
+  --sol-yellow:  #b58900;
+  --sol-orange:  #cb4b16;
+  --sol-red:     #dc322f;
+  --sol-magenta: #d33682;
+  --sol-violet:  #6c71c4;
+  --sol-blue:    #268bd2;
+  --sol-cyan:    #2aa198;
+  --sol-green:   #859900;
+
+  @include light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include dark; }
+}
+:root[data-theme="dark"]  { @include dark; }
+:root[data-theme="light"] { @include light; }

@@ -1,14 +1,22 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
-
-<p>
-  {{ page.date | date_to_string }}
-  {% assign author = site.authors | where: 'short_name', page.author | first %}
-  {% if author %}
-    - <a href="{{ author.url }}">{{ author.name }}</a>
-  {% endif %}
-</p>
-
+      <article class="post">
+        {%- if page.rendered_lang != site.active_lang %}
+        <p class="translation-note" role="note">{{ site.data.weblog.not_translated }}</p>
+        {%- endif %}
+        {%- if page.image %}
+        {% include figure.html src=page.image alt=page.image_alt caption=page.image_caption class="post-hero" %}
+        {%- endif %}
+        <h1 class="post-title">{{ page.title }}</h1>
+        {% include post-meta.html post=page %}
+        {%- if page.summary %}
+        <p class="post-summary">{{ page.summary }}</p>
+        {%- endif %}
+        <div class="post-body">
 {{ content }}
+        </div>
+        {% include sources.html post=page %}
+        {% include tag-list.html post=page %}
+        <p class="post-back"><a href="/weblog/">{{ site.data.weblog.back_to_index }}</a></p>
+      </article>

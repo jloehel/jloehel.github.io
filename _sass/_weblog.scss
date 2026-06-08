@@ -1,0 +1,292 @@
+// Index
+
+.weblog-index h1,
+.tag-index h1 {
+  font-family: var(--font-mono);
+  font-size: 1.9rem;
+  margin: 0 0 0.5rem;
+}
+.weblog-index h1::before,
+.tag-index h1::before { content: "// "; color: var(--fg-muted); }
+
+.index-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin: 0 0 2rem;
+}
+
+.feed-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.feed-link svg {
+  width: 0.9em;
+  height: 0.9em;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+.index-empty { color: var(--fg-muted); }
+
+// Card
+
+.post-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.post-card:last-of-type { border-bottom: 0; }
+
+.card-media {
+  flex: 0 0 150px;
+  width: 150px;
+  height: 150px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-placeholder {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.card-body { flex: 1 1 auto; min-width: 0; }
+.card-title { font-size: 1.35rem; margin: 0.25rem 0 0.5rem; }
+.card-title a { color: var(--fg-strong); }
+.card-title a:hover { color: var(--accent); text-decoration: none; }
+.card-summary { margin: 0 0 0.75rem; }
+
+.card-note {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--sol-orange);
+  border: 1px solid var(--sol-orange);
+  border-radius: 5px;
+  padding: 0.05em 0.45em;
+  margin: 0 0 0.35rem;
+}
+
+// Meta line
+
+.post-meta {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--fg-muted);
+  margin: 0;
+}
+.post-meta a { color: var(--fg-muted); }
+.post-meta a:hover { color: var(--accent); }
+.meta-sep { margin: 0 0.4rem; }
+
+// Tags
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+}
+.tag-chip {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--fg-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.1em 0.65em;
+}
+.tag-chip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+.tag-cloud { margin-bottom: 2.5rem; }
+
+.tag-section { margin: 0 0 2rem; scroll-margin-top: 5rem; }
+.tag-section h2 { font-family: var(--font-mono); font-size: 1.15rem; margin: 0 0 0.5rem; }
+.tag-posts { list-style: none; margin: 0; padding: 0; }
+.tag-posts li { margin: 0 0 0.35rem; }
+.tag-posts time { font-family: var(--font-mono); font-size: 0.82rem; color: var(--fg-muted); margin-right: 0.6rem; }
+
+// Blogroll
+
+.blogroll {
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+.blogroll h2 {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--fg-muted);
+  margin: 0 0 1.25rem;
+}
+.blogroll h2::before { content: "// "; }
+
+.link-list { list-style: none; margin: 0; padding: 0; }
+
+.link-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.65rem 0;
+}
+
+.link-mark {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  overflow: hidden;
+}
+.link-mark img { width: 16px; height: 16px; display: block; }
+.link-emoji { font-size: 0.95rem; line-height: 1; }
+
+.link-body { min-width: 0; }
+
+.link-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+.link-name { font-weight: 600; color: var(--fg-strong); }
+.link-name:hover { color: var(--accent); text-decoration: none; }
+
+.link-domain {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  word-break: break-word;
+}
+.link-note {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--fg);
+}
+
+// Post
+
+.post-title { font-size: 2rem; margin: 0 0 0.6rem; }
+
+.translation-note {
+  font-size: 0.9rem;
+  color: var(--fg-strong);
+  background: var(--surface);
+  border-left: 3px solid var(--sol-orange);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.post-summary {
+  font-size: 1.1rem;
+  color: var(--fg-strong);
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+}
+
+.post-body {
+  h2 { font-size: 1.4rem; margin: 2.5rem 0 0.6rem; }
+  h3 { font-size: 1.15rem; margin: 1.8rem 0 0.4rem; }
+  p, ul, ol { margin: 0 0 1rem; }
+  ul, ol { padding-left: 1.3rem; }
+  blockquote {
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid var(--border);
+    color: var(--fg-muted);
+  }
+}
+
+.post-figure { margin: 1.75rem 0; }
+.post-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: block;
+  margin-inline: auto;
+}
+.post-figure img[src$=".svg"] {
+  border: 0;
+}
+
+.post-figure.post-hero {
+  float: right;
+  width: 11rem;
+  margin: 0.25rem 0 1rem 1.75rem;
+}
+.post-figure.post-hero img { width: 100%; }
+.post-figure.post-hero figcaption { text-align: center; }
+
+.post-sources,
+.post > .tag-list,
+.post-back { clear: both; }
+.post-figure figcaption {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  margin-top: 0.5rem;
+}
+
+.post-sources {
+  margin: 2.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.post-sources h2 { font-family: var(--font-mono); font-size: 1.05rem; margin: 0 0 0.6rem; }
+.post-sources ol { margin: 0; padding-left: 1.3rem; font-size: 0.92rem; }
+.post-sources li { margin: 0 0 0.4rem; }
+.source-note { color: var(--fg-muted); }
+
+.footnotes {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+
+.post-back {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin: 2.5rem 0 0;
+}
+
+@media (max-width: 720px) {
+  .post-card { flex-direction: column; gap: 0.9rem; }
+  .card-media { width: 100%; flex-basis: auto; height: 180px; }
+  .post-title { font-size: 1.6rem; }
+  .copy-code { opacity: 1; }
+
+  .post-figure.post-hero {
+    float: none;
+    width: auto;
+    max-width: 12rem;
+    margin: 1.5rem auto;
+  }
+}

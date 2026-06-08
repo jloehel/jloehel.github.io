@@ -1,0 +1,44 @@
+- name: "Manuel Boll"
+  url: https://www.mboll.eu
+  domain: mboll.eu
+  favicon: /assets/images/links/mboll.eu.ico
+  note:
+    en: "CTF companion, mixes some of the best whiskey sours. Threat hunting, malware analysis and more"
+    de: "CTF-Begleiter, macht mit die besten Whiskey Sour. Threat Hunting, Malware-Analyse und mehr"
+    es: "Compañero de CTF, prepara de los mejores whiskey sours. Threat hunting, análisis de malware y más"
+
+- name: "Ivan Ogasawara"
+  url: https://ivanogasawara.com/blog/
+  domain: ivanogasawara.com
+  favicon: /assets/images/links/ivanogasawara.com.ico
+  note:
+    en: "Author of ArxLang"
+    de: "Autor von ArxLang"
+    es: "Autor de ArxLang"
+
+- name: "Morsch"
+  url: https://drivenbydemons.blogspot.com/
+  domain: drivenbydemons.blogspot.com
+  favicon: /assets/images/links/drivenbydemons.ico
+  note:
+    en: "The macabre, on paper and canvas"
+    de: "Morbides auf Papier und Leinwand"
+    es: "Lo macabro, sobre papel y lienzo"
+
+- name: "Niklaus Schiess"
+  url: https://adversec.com/
+  domain: adversec.com
+  emoji: "🏰"
+  note:
+    en: "Cloud security and security research"
+    de: "Cloud Security und Security Research"
+    es: "Seguridad en la nube e investigación de seguridad"
+
+- name: "Malcat"
+  url: https://malcat.fr/blog.html
+  domain: malcat.fr
+  favicon: /assets/images/links/malcat.ico
+  note:
+    en: "Best tool for reverse engineering"
+    de: "Das beste Werkzeug fürs Reverse Engineering"
+    es: "La mejor herramienta de ingeniería inversa"

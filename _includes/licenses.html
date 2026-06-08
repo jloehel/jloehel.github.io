@@ -1,0 +1,12 @@
+{%- assign icons_text = site.data.licenses.icons
+      | replace: '%FA_VERSION%', site.data.versions.font_awesome -%}
+{%- assign fonts_text = site.data.licenses.fonts
+      | replace: '%SANS_VERSION%', site.data.versions.source_sans
+      | replace: '%SCP_VERSION%', site.data.versions.source_code_pro -%}
+<section class="licenses">
+  <h3>{{ site.data.licenses.title }}</h3>
+  <ul>
+    <li>{{ icons_text }}</li>
+    <li>{{ fonts_text }}</li>
+  </ul>
+</section>

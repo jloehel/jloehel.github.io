@@ -1,13 +1,7 @@
-collections:
-  authors:
-    output: true
+plugins:
+  - jekyll-polyglot
 
 defaults:
-  - scope:
-      path: ""
-      type: "authors"
-    values:
-      layout: "author"
   - scope:
       path: ""
       type: "posts"
@@ -17,3 +11,23 @@ defaults:
       path: ""
     values:
       layout: "default"
+
+languages: ["en", "de", "es"]
+default_lang: "en"
+lang_from_path: true
+exclude_from_localization: ["assets", "CNAME", "robots.txt", ".well-known"]
+parallel_localization: true
+url: https://juergen.loehel.de
+
+include:
+  - ".well-known"
+
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - bin
+  - docs
+  - CLAUDE.md
+  - TODO.md

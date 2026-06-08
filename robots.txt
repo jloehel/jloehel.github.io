@@ -1,0 +1,20 @@
+User-agent: GPTBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: meta-externalagent
+User-agent: Bytespider
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: OAI-SearchBot
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://juergen.loehel.de/sitemap.xml
+Sitemap: https://juergen.loehel.de/de/sitemap.xml
+Sitemap: https://juergen.loehel.de/es/sitemap.xml

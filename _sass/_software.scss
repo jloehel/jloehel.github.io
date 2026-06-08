@@ -1,0 +1,97 @@
+.software-index h1 {
+  font-family: var(--font-mono);
+  font-size: 1.9rem;
+  margin: 0 0 2rem;
+}
+.software-index h1::before { content: "// "; color: var(--fg-muted); }
+
+.project-group {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--fg-muted);
+  margin: 2.5rem 0 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+.project-group:first-of-type { margin-top: 0; }
+
+.project-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.project-card:last-child { border-bottom: 0; }
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.link-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--fg-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.18em 0.7em;
+}
+.link-chip svg {
+  width: 0.95em;
+  height: 0.95em;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+.link-chip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+
+.link-chip.is-source {
+  color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+.link-chip.is-source:hover { background: var(--accent-soft); }
+
+.link-sep {
+  width: 1px;
+  height: 1.1rem;
+  background: var(--border);
+  margin: 0 0.35rem;
+}
+
+.project-card.is-archived {
+  .card-media img { filter: grayscale(1); opacity: 0.65; }
+  .card-placeholder { color: var(--fg-muted); }
+  .card-title a { color: var(--fg-muted); }
+  .card-title a:hover { color: var(--accent); }
+  .card-summary { color: var(--fg-muted); }
+}
+
+@media (max-width: 720px) {
+  .project-card { flex-direction: row; gap: 0.9rem; }
+  .project-card .card-media {
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
+  }
+  .link-sep { display: none; }
+}
+
+@media (max-width: 420px) {
+  .project-card .card-media {
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+  }
+}

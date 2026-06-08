@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
-  {%- include head.html -%}
-  <body>
-    {%- include header.html -%}
+{% include head.html %}
+  <body data-copy-label="{{ site.data.weblog.copy_code }}" data-copied-label="{{ site.data.weblog.code_copied }}">
+{% include header.html %}
     <main>
-      {{ content }}
+      <noscript><p class="nojs-note">{{ site.data.nojs.note }}</p></noscript>
+{{ content }}
     </main>
-    {%- include footer.html -%}
+{% include footer.html %}
   </body>
 </html>

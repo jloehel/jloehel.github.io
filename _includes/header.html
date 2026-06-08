@@ -1,3 +1,20 @@
-
-  <header>
-  </header>
+    <header class="site-header">
+      <nav class="topnav">
+        <a href="/" class="brand">$ jloehel</a>
+        <ul id="links" class="links">
+          <li><a href="/"{% if page.page_id == 'about' %} class="current" aria-current="page"{% endif %}>{{ site.data.nav.about }}</a></li>
+          <li><a href="/weblog/"{% if page.page_id == 'weblog' or page.layout == 'post' or page.page_id == 'weblog-tags' %} class="current" aria-current="page"{% endif %}>{{ site.data.nav.weblog }}</a></li>
+          <li><a href="/software/"{% if page.page_id == 'software' %} class="current" aria-current="page"{% endif %}>{{ site.data.nav.software }}</a></li>
+        </ul>
+        <div class="controls">
+          {% unless page.hide_lang_switcher %}{% include lang.html %}{% endunless %}
+          <button class="icon-button theme-toggle" aria-label="Theme" aria-pressed="false">
+            <span class="icon-moon">{% include icons/moon.svg %}</span>
+            <span class="icon-sun">{% include icons/sun.svg %}</span>
+          </button>
+          <button class="icon-button burger" aria-label="Menu" aria-expanded="false" aria-controls="links">
+            {% include icons/bars.svg %}
+          </button>
+        </div>
+      </nav>
+    </header>

@@ -1,0 +1,52 @@
+{%- assign p = include.project -%}
+{%- assign lang = site.active_lang | default: site.default_lang -%}
+{%- assign desc = p.description[lang] | default: p.description[site.default_lang] -%}
+{%- assign repo_label = site.data.software.source -%}
+{%- assign repo_icon = "" -%}
+{%- if p.repo contains 'github.com' -%}
+  {%- assign repo_label = 'GitHub' -%}{%- assign repo_icon = 'github' -%}
+{%- elsif p.repo contains 'gitlab.com' -%}
+  {%- assign repo_label = 'GitLab' -%}{%- assign repo_icon = 'gitlab' -%}
+{%- elsif p.repo contains 'codeberg.org' -%}
+  {%- assign repo_label = 'Codeberg' -%}
+{%- endif -%}
+{%- assign has_more = false -%}
+{%- if p.more_authors -%}{%- assign has_more = true -%}{%- endif -%}
+<article class="project-card{% if p.status %} is-{{ p.status }}{% endif %}">
+          <a class="card-media" href="{{ p.repo }}" tabindex="-1" aria-hidden="true">
+            {%- if p.image -%}
+            <img src="{{ p.image | relative_url }}" alt="" loading="lazy" decoding="async">
+            {%- else -%}
+            <span class="card-placeholder">{{ p.language | default: '$_' }}</span>
+            {%- endif -%}
+          </a>
+          <div class="card-body">
+            <h3 class="card-title"><a href="{{ p.repo }}" rel="noopener">{{ p.name }}</a></h3>
+            <p class="post-meta">
+              {%- if p.language %}<span>{{ p.language }}</span>{% endif -%}
+              {%- if p.license %}<span class="meta-sep" aria-hidden="true">·</span><span>{{ p.license }}</span>{% endif -%}
+              {%- if p.authors and p.authors.size > 0 -%}
+              <span class="meta-sep" aria-hidden="true">·</span><span class="post-authors">
+                {%- for key in p.authors -%}
+                  {%- assign a = site.data.authors[key] -%}
+                  {%- unless forloop.first %}{% if forloop.last and has_more == false %} &amp; {% else %}, {% endif %}{% endunless -%}
+                  {%- if a.url -%}<a href="{{ a.url }}" rel="noopener">{{ a.name }}</a>{%- else -%}{{ a.name | default: key }}{%- endif -%}
+                {%- endfor -%}
+                {%- if has_more %} &amp; <a href="{{ p.more_authors }}" rel="noopener">{{ site.data.software.more_authors }}</a>{% endif -%}
+              </span>
+              {%- endif -%}
+            </p>
+            {%- if desc %}
+            <p class="card-summary">{{ desc }}</p>
+            {%- endif %}
+            <div class="project-links">
+              <a class="link-chip is-source" href="{{ p.repo }}" rel="noopener">{% if repo_icon == 'github' %}{% include icons/github.svg %}{% elsif repo_icon == 'gitlab' %}{% include icons/gitlab.svg %}{% endif %}{{ repo_label }}</a>
+              {%- if p.links and p.links.size > 0 %}
+              <span class="link-sep" aria-hidden="true"></span>
+              {%- for l in p.links %}
+              <a class="link-chip" href="{{ l.url }}" rel="noopener">{{ l.label }}</a>
+              {%- endfor %}
+              {%- endif %}
+            </div>
+          </div>
+        </article>

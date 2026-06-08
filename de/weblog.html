@@ -1,0 +1,31 @@
+---
+title: Weblog
+permalink: /weblog/
+layout: default
+lang: de
+page_id: weblog
+---
+      <section class="weblog-index">
+        <h1>{{ site.data.weblog.title }}</h1>
+        <p class="index-tools">
+          <a href="/weblog/tags/">{{ site.data.weblog.all_tags }}</a>
+          <a class="feed-link" href="/feed.xml" title="{{ site.data.weblog.feed_title }}">{% include icons/rss.svg %}{{ site.data.weblog.feed }}</a>
+        </p>
+        {%- if site.posts.size == 0 %}
+        <p class="index-empty">{{ site.data.weblog.empty }}</p>
+        {%- else %}
+        {%- for post in site.posts %}
+        {% include post-card.html post=post %}
+        {%- endfor %}
+        {%- endif %}
+      </section>
+      {%- if site.data.links and site.data.links.size > 0 %}
+      <section class="blogroll">
+        <h2>{{ site.data.weblog.blogroll }}</h2>
+        <ul class="link-list">
+          {%- for link in site.data.links %}
+          {% include link-row.html link=link %}
+          {%- endfor %}
+        </ul>
+      </section>
+      {%- endif %}

@@ -1,0 +1,127 @@
+#!/bin/sh
+#
+# Legt einen Beitrag in allen drei Sprachen an: Monatsverzeichnis, drei Dateien mit
+# gemeinsamer page_id, sprachspezifischem Permalink und Body-Gerüst.
+set -eu
+
+PROG="$(basename "$0")"
+ROOT="$(dirname "$0")/.."
+
+usage() {
+  cat <<EOF
+Usage: $PROG <slug> [YYYY-MM-DD]
+       $PROG --help
+
+Legt unter _posts/<jahr>/<monat>/<sprache>/ je eine Markdown-Datei für en, de und es
+an. Alle drei teilen sich die page_id, damit Polyglot sie als Übersetzungen erkennt.
+
+Argumente:
+  slug          Bezeichner des Beitrags, Kleinbuchstaben, Ziffern und Bindestriche.
+                Wird zu page_id, Permalink und Dateinamen.
+  YYYY-MM-DD    Datum des Beitrags. Ohne Angabe das heutige.
+
+Beispiel:
+  $PROG systemd-hardening
+  $PROG systemd-hardening 2026-09-01
+
+Bestehende Dateien werden nicht überschrieben.
+EOF
+}
+
+die() {
+  echo "$PROG: $1" >&2
+  echo "\"$PROG --help\" zeigt die Verwendung." >&2
+  exit 1
+}
+
+parse_args() {
+  case "${1:-}" in
+    -h|--help) usage; exit 0 ;;
+    "")        die "kein Slug angegeben" ;;
+    -*)        die "unbekannte Option: $1" ;;
+  esac
+
+  SLUG="$1"
+  DATE="${2:-$(date +%Y-%m-%d)}"
+
+  case "$SLUG" in
+    *[!a-z0-9-]*) die "Slug enthält unerlaubte Zeichen: $SLUG" ;;
+    -*|*-)        die "Slug darf nicht mit einem Bindestrich beginnen oder enden: $SLUG" ;;
+  esac
+
+  case "$DATE" in
+    [0-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]) ;;
+    *) die "Datum muss YYYY-MM-DD sein: $DATE" ;;
+  esac
+
+  YEAR="${DATE%%-*}"
+  MONTH="$(echo "$DATE" | cut -d- -f2)"
+}
+
+headings() {
+  case "$1" in
+    en) printf 'Introduction\nMain part\nConclusion\nTwo or three sentences summarising the post.\n' ;;
+    de) printf 'Einleitung\nHauptteil\nFazit\nZwei, drei Sätze, die den Beitrag zusammenfassen.\n' ;;
+    es) printf 'Introducción\nDesarrollo\nConclusión\nDos o tres frases que resuman el artículo.\n' ;;
+  esac
+}
+
+write_post() {
+  lang="$1"
+  dir="$ROOT/_posts/$YEAR/$MONTH/$lang"
+  file="$dir/$DATE-$SLUG.md"
+  mkdir -p "$dir"
+
+  if [ -e "$file" ]; then
+    echo "exists, skipping: $file"
+    return
+  fi
+
+  intro="$(headings "$lang" | sed -n 1p)"
+  main="$(headings "$lang" | sed -n 2p)"
+  outro="$(headings "$lang" | sed -n 3p)"
+  lead="$(headings "$lang" | sed -n 4p)"
+
+  cat > "$file" <<EOF
+---
+layout: post
+page_id: $SLUG
+lang: $lang
+permalink: /weblog/$SLUG/
+title: "$SLUG"
+date: $DATE
+authors: [jloehel]
+tags: []
+summary: >
+  $lead
+# image: /assets/images/posts/$SLUG.svg
+# image_alt:
+# image_caption:
+# sources:
+#   - title:
+#     url:
+#     note:
+---
+
+$intro.
+
+## $main
+
+## $outro
+EOF
+  echo "created: $file"
+}
+
+parse_args "$@"
+
+for lang in en de es; do
+  write_post "$lang"
+done
+
+cat <<EOF
+
+Noch zu tun:
+  - title und summary in allen drei Dateien füllen
+  - Permalink pro Sprache übersetzen (aktuell überall /weblog/$SLUG/)
+  - Dateinamen-Slug pro Sprache anpassen, page_id dabei unverändert lassen
+EOF

@@ -1,0 +1,63 @@
+name: Update Font Awesome
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Check for a new Font Awesome release and open a PR
+        run: |
+          pins=_data/versions.yml
+          latest=$(gh release view --repo FortAwesome/Font-Awesome --json tagName --jq .tagName)
+          case "$latest" in
+            ''|*[!0-9.]*)
+              echo "ERROR: unexpected Font Awesome tag: $latest" >&2
+              exit 1
+              ;;
+          esac
+
+          current=$(sed -n 's/^font_awesome: *"\([^"]*\)".*/\1/p' "$pins")
+          if [ -z "$current" ]; then
+            echo "ERROR: font_awesome not found in $pins" >&2
+            exit 1
+          fi
+          if [ "$latest" = "$current" ]; then
+            echo "Font Awesome is up to date ($current)."
+            exit 0
+          fi
+          echo "Updating Font Awesome $current -> $latest"
+          sed -i "s|^font_awesome: .*|font_awesome: \"$latest\"|" "$pins"
+          grep -q "^font_awesome: \"$latest\"\$" "$pins" || {
+            echo "ERROR: could not rewrite font_awesome in $pins" >&2
+            exit 1
+          }
+          sh bin/update-assets.sh icons
+
+          branch="chore/update-fontawesome-$latest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add "$pins" _includes/icons
+          git commit -m "chore: update Font Awesome to $latest"
+          git push -u origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "chore: update Font Awesome to $latest" \
+            --body "$(printf '%s\n' \
+              "Automated update from \`$current\` to \`$latest\` via \`bin/update-assets.sh icons\`." \
+              "" \
+              "Please check before merging:" \
+              "" \
+              "- [ ] The icon changes look right." \
+              "- [ ] **The licence terms still hold.** The site states the licence per version in the licence block; the version is pulled from \`_data/versions.yml\`, but the licence text itself is not. If Font Awesome changed its terms with this release, update \`licenses.icons\` in \`_data/en.yml\`, \`_data/de.yml\` and \`_data/es.yml\`.")"

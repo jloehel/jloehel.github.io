@@ -1,0 +1,26 @@
+<details class="lang-switcher">
+            <summary aria-label="Language">{{ site.active_lang | upcase }}</summary>
+            <ul class="lang-menu">
+              {%- for lang in site.languages %}
+              {%- assign lang_path = page.permalink_lang[lang] | default: page.permalink %}
+              {%- if lang == site.default_lang %}
+                {%- capture lang_href %}{{ site.baseurl }}{{ lang_path }}{% endcapture %}
+              {%- else %}
+                {%- capture lang_href %}{{ site.baseurl }}/{{ lang }}{{ lang_path }}{% endcapture %}
+              {%- endif %}
+              {%- assign lname = lang | upcase %}
+              {%- case lang %}
+                {%- when 'en' %}{% assign lname = 'English' %}
+                {%- when 'de' %}{% assign lname = 'Deutsch' %}
+                {%- when 'es' %}{% assign lname = 'Espa&ntilde;ol' %}
+              {%- endcase %}
+              <li>
+                {%- if lang == site.active_lang %}
+                <span lang="{{ lang }}" aria-current="true">{{ lname }}</span>
+                {%- else %}
+                <a {% static_href %}href="{{ lang_href }}"{% endstatic_href %} hreflang="{{ lang }}" lang="{{ lang }}">{{ lname }}</a>
+                {%- endif %}
+              </li>
+              {%- endfor %}
+            </ul>
+          </details>

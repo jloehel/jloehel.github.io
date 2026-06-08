@@ -1,0 +1,4 @@
+{%- assign p = include.post -%}
+{%- if p.tags and p.tags.size > 0 -%}
+<ul class="tag-list">{% for t in p.tags %}<li><a class="tag-chip" href="/weblog/tags/#tag-{{ t | slugify }}">#{{ t }}</a></li>{% endfor %}</ul>
+{%- endif -%}

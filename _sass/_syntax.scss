@@ -1,0 +1,81 @@
+.highlight-wrap {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.copy-code {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.2rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.highlight-wrap:hover .copy-code,
+.copy-code:focus-visible { opacity: 1; }
+.copy-code:hover { color: var(--accent); border-color: var(--accent); }
+
+.code-caption {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  margin: 1.5rem 0 -1.25rem;
+}
+
+div.highlight {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+
+div.highlight pre {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+:not(pre) > code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+}
+
+.highlight {
+  .c, .c1, .cm, .cs, .cd { color: var(--fg-muted); font-style: italic; }
+  .cp { color: var(--sol-orange); }
+  .err { color: var(--sol-red); }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt { color: var(--sol-green); }
+  .o, .ow { color: var(--sol-green); }
+  .p { color: var(--fg); }
+  .n, .nb, .bp { color: var(--fg); }
+  .nc, .nn { color: var(--sol-yellow); }
+  .nf, .nd { color: var(--sol-blue); }
+  .na, .nv, .vc, .vg, .vi { color: var(--sol-blue); }
+  .no, .ni { color: var(--sol-orange); }
+  .ne, .nl, .nt { color: var(--sol-blue); }
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss { color: var(--sol-cyan); }
+  .m, .mf, .mh, .mi, .mo, .il { color: var(--sol-cyan); }
+  .gd { color: var(--sol-red); }
+  .gi { color: var(--sol-green); }
+  .gh { color: var(--sol-orange); font-weight: 600; }
+  .gu { color: var(--sol-violet); }
+  .ge { font-style: italic; }
+  .gs { font-weight: 600; }
+  .w { color: var(--fg-muted); }
+}

@@ -1,0 +1,21 @@
+{%- assign p = include.post -%}
+<article class="post-card">
+          <a class="card-media" href="{{ p.url }}" tabindex="-1" aria-hidden="true">
+            {%- if p.image -%}
+            <img src="{{ p.image | relative_url }}" alt="" loading="lazy" decoding="async">
+            {%- else -%}
+            <span class="card-placeholder">{% if p.tags.size > 0 %}#{{ p.tags[0] }}{% else %}$_{% endif %}</span>
+            {%- endif -%}
+          </a>
+          <div class="card-body">
+            {% include post-meta.html post=p %}
+            {%- if p.rendered_lang != site.active_lang %}
+            <p class="card-note">{{ site.data.weblog.not_translated_short }}</p>
+            {%- endif %}
+            <h2 class="card-title"><a href="{{ p.url }}">{{ p.title }}</a></h2>
+            {%- if p.summary %}
+            <p class="card-summary">{{ p.summary | strip_newlines | truncate: 180 }}</p>
+            {%- endif %}
+            {% include tag-list.html post=p %}
+          </div>
+        </article>

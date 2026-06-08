@@ -1,0 +1,32 @@
+---
+title: Schlagwörter
+permalink: /weblog/tags/
+layout: default
+lang: de
+page_id: weblog-tags
+---
+{%- assign all_tags = "" | split: "," -%}
+{%- for post in site.posts -%}
+  {%- assign all_tags = all_tags | concat: post.tags -%}
+{%- endfor -%}
+{%- assign all_tags = all_tags | uniq | sort %}
+      <section class="tag-index">
+        <h1>{{ site.data.weblog.tags_title }}</h1>
+        <ul class="tag-list tag-cloud">
+          {%- for t in all_tags %}
+          <li><a class="tag-chip" href="#tag-{{ t | slugify }}">#{{ t }}</a></li>
+          {%- endfor %}
+        </ul>
+        {%- for t in all_tags %}
+        {%- assign tagged = site.posts | where_exp: "p", "p.tags contains t" %}
+        <section class="tag-section" id="tag-{{ t | slugify }}">
+          <h2>#{{ t }}</h2>
+          <ul class="tag-posts">
+            {%- for post in tagged %}
+            <li><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y-%m-%d' }}</time><a href="{{ post.url }}">{{ post.title }}</a>{% if post.rendered_lang != site.active_lang %} <span class="card-note">{{ site.data.weblog.not_translated_short }}</span>{% endif %}</li>
+            {%- endfor %}
+          </ul>
+        </section>
+        {%- endfor %}
+        <p class="post-back"><a href="/weblog/">{{ site.data.weblog.back_to_index }}</a></p>
+      </section>

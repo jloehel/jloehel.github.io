@@ -1,0 +1,45 @@
+---
+---
+@media (max-width: 720px) {
+  .topnav {
+    flex-wrap: wrap;
+  }
+
+  .links {
+    order: 3;
+    width: 100%;
+    display: flex;
+    position: static;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 0.6rem;
+    padding: 0.5rem 0 0;
+    background: none;
+    box-shadow: none;
+    border-bottom: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .links a {
+    display: block;
+    padding: 0.3rem 0;
+    border-radius: 0;
+    background: none;
+  }
+
+  .links a:hover,
+  .links a:focus-visible,
+  .links a:active,
+  .links a.current {
+    background: none;
+    color: var(--accent);
+  }
+
+  .burger {
+    display: none;
+  }
+}
+
+.theme-toggle {
+  display: none;
+}

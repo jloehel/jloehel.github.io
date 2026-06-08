@@ -1,0 +1,55 @@
+nav:
+  about: "Über mich"
+  weblog: "Weblog"
+  software: "Software"
+footer:
+  legal: "Impressum"
+  legal_url: "/de/impressum/"
+  privacy: "Datenschutz"
+  privacy_url: "/de/datenschutz/"
+  hosted_by: "Gehostet von"
+  generated_by: "erzeugt mit"
+  created_with: "Erstellt mit"
+  and_mate: "und Mate"
+meta:
+  description: "Python-Entwickler und Penetration Tester. Linux, Open Source, RPM-Packaging."
+nojs:
+  note: "JavaScript ist aus, deshalb fehlen ein paar Kleinigkeiten: Das Theme folgt stattdessen deiner Systemeinstellung, und Codeblöcke haben keinen Kopieren-Knopf. Alles Übrige funktioniert."
+software:
+  title: "Software"
+  empty: "Noch keine Projekte eingetragen."
+  source: "Quellcode"
+  more_authors: "weitere"
+  contributions: "Contributions"
+  status:
+    active: "Aktiv"
+    maintained: "Gewartet"
+    archived: "Archiviert"
+licenses:
+  title: "Schriften &amp; Icons"
+  icons: >-
+    Icons: <a href="https://fontawesome.com/" rel="external">Font Awesome Free</a> %FA_VERSION%
+    — © Fonticons, Inc., Lizenz
+    <a href="https://creativecommons.org/licenses/by/4.0/" rel="license external">CC BY 4.0</a>.
+  fonts: >-
+    Schriften: basieren auf
+    <a href="https://github.com/adobe-fonts/source-sans" rel="external">Source Sans 3</a> %SANS_VERSION% und
+    <a href="https://github.com/adobe-fonts/source-code-pro" rel="external">Source Code Pro</a> %SCP_VERSION%
+    (© Adobe, <a href="https://openfontlicense.org/" rel="license external">SIL Open Font License 1.1</a>).
+    Verwendet in einer auf Latein reduzierten und umbenannten Fassung („JL Sans“ / „JL Mono“),
+    da die OFL für veränderte Versionen die Nutzung des Reserved Font Name „Source“ untersagt.
+weblog:
+  title: "Weblog"
+  empty: "Noch keine Beiträge."
+  reading_time: "Min. Lesezeit"
+  not_translated: "Dieser Beitrag ist noch nicht übersetzt und wird auf Englisch angezeigt."
+  not_translated_short: "nur auf Englisch"
+  sources: "Quellen"
+  tags_title: "Schlagwörter"
+  all_tags: "Alle Schlagwörter"
+  feed: "RSS"
+  feed_title: "Feed abonnieren"
+  back_to_index: "Zurück zur Übersicht"
+  copy_code: "Kopieren"
+  code_copied: "Kopiert"
+  blogroll: "Blogroll"

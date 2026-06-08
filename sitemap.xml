@@ -1,0 +1,27 @@
+---
+permalink: /sitemap.xml
+layout: null
+---
+{%- if site.active_lang == site.default_lang -%}{%- assign prefix = "" -%}{%- else -%}{%- assign prefix = "/" | append: site.active_lang -%}{%- endif -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {%- for post in site.posts %}
+  <url>
+    <loc>{{ site.url }}{{ prefix }}{{ post.url }}</loc>
+    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+  </url>
+  {%- endfor %}
+  {%- comment %}
+    page.output_ext is not exposed to Liquid. Real pages all end in a slash, while
+    feed.xml, sitemap.xml and the compiled stylesheet do not — so filter on that.
+  {%- endcomment %}
+  {%- for page in site.pages %}
+  {%- assign page_url = page.url | default: page.permalink %}
+  {%- assign last_char = page_url | slice: -1 %}
+  {%- if last_char == '/' %}
+  <url>
+    <loc>{{ site.url }}{{ prefix }}{{ page_url }}</loc>
+  </url>
+  {%- endif %}
+  {%- endfor %}
+</urlset>

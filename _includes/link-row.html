@@ -1,0 +1,21 @@
+{%- assign l = include.link -%}
+{%- assign lang = site.active_lang | default: site.default_lang -%}
+{%- assign note = l.note[lang] | default: l.note[site.default_lang] -%}
+<li class="link-row">
+            <span class="link-mark" aria-hidden="true">
+              {%- if l.favicon -%}
+              <img src="{{ l.favicon | relative_url }}" alt="" loading="lazy" width="18" height="18">
+              {%- elsif l.emoji -%}
+              <span class="link-emoji">{{ l.emoji }}</span>
+              {%- else -%}
+              {{ l.name | slice: 0 | upcase }}
+              {%- endif -%}
+            </span>
+            <span class="link-body">
+              <span class="link-head">
+                <a class="link-name" href="{{ l.url }}" rel="noopener">{{ l.name }}</a>
+                {%- unless l.domain == l.name %}<span class="link-domain">{{ l.domain }}</span>{% endunless -%}
+              </span>
+              {%- if note %}<span class="link-note">{{ note }}</span>{% endif %}
+            </span>
+          </li>

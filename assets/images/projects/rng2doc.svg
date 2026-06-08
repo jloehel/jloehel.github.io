@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="rng2doc-title">
+  <title id="rng2doc-title">A sharp angle flattening line by line until it becomes a straight rule</title>
+
+  <g fill="none" stroke="#839496" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 56  L128 22  L208 56"  opacity="0.45"/>
+    <path d="M48 94  L128 70  L208 94"  opacity="0.6"/>
+    <path d="M48 132 L128 118 L208 132" opacity="0.75"/>
+    <path d="M48 170 L128 164 L208 170" opacity="0.9"/>
+  </g>
+
+  <path d="M48 208 L208 208" fill="none" stroke="#2aa198" stroke-width="12" stroke-linecap="round"/>
+</svg>

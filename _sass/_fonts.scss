@@ -1,0 +1,15 @@
+@mixin face($family, $weight, $file) {
+  @font-face {
+    font-family: $family;
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url("../fonts/#{$file}.woff2") format("woff2");
+  }
+}
+
+@include face("JL Sans", 400, "source-sans-3-400");
+@include face("JL Sans", 600, "source-sans-3-600");
+@include face("JL Sans", 700, "source-sans-3-700");
+@include face("JL Mono", 400, "source-code-pro-400");
+@include face("JL Mono", 600, "source-code-pro-600");

@@ -1,0 +1,30 @@
+---
+permalink: /feed.xml
+layout: null
+---
+{%- if site.active_lang == site.default_lang -%}{%- assign prefix = "" -%}{%- else -%}{%- assign prefix = "/" | append: site.active_lang -%}{%- endif -%}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ site.active_lang }}">
+  <title>Jürgen Löhel — {{ site.data.weblog.title }}</title>
+  <link href="{{ site.url }}{{ prefix }}/feed.xml" rel="self"/>
+  <link href="{{ site.url }}{{ prefix }}/weblog/"/>
+  <id>{{ site.url }}{{ prefix }}/weblog/</id>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <author><name>Jürgen Löhel</name></author>
+  {%- for post in site.posts %}
+  <entry>
+    <title>{{ post.title | xml_escape }}</title>
+    <link href="{{ site.url }}{{ prefix }}{{ post.url }}"/>
+    <id>{{ site.url }}{{ prefix }}{{ post.url }}</id>
+    <published>{{ post.date | date_to_xmlschema }}</published>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    {%- for key in post.authors %}
+    <author><name>{{ site.data.authors[key].name | xml_escape }}</name></author>
+    {%- endfor %}
+    {%- for t in post.tags %}
+    <category term="{{ t | xml_escape }}"/>
+    {%- endfor %}
+    <summary>{{ post.summary | strip_newlines | xml_escape }}</summary>
+  </entry>
+  {%- endfor %}
+</feed>
