@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="world-title">
+  <title id="world-title">A wireframe globe of meridians and parallels</title>
+
+  <circle cx="160" cy="160" r="140" fill="#2aa198" opacity="0.08"/>
+
+  <g fill="none" stroke="#2aa198" stroke-width="3">
+    <ellipse cx="160" cy="160" rx="140" ry="140"/>
+    <ellipse cx="160" cy="160" rx="96"  ry="140"/>
+    <ellipse cx="160" cy="160" rx="48"  ry="140"/>
+    <path d="M160 20 V300"/>
+  </g>
+
+  <g fill="none" stroke="#2aa198" stroke-width="3" opacity="0.75">
+    <path d="M20 160 H300"/>
+    <ellipse cx="160" cy="114" rx="132" ry="16"/>
+    <ellipse cx="160" cy="206" rx="132" ry="16"/>
+    <ellipse cx="160" cy="68"  rx="105" ry="12"/>
+    <ellipse cx="160" cy="252" rx="105" ry="12"/>
+  </g>
+</svg>
