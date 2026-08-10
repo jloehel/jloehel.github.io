@@ -18,6 +18,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Check for a new Font Awesome release and open a PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pins=_data/versions.yml
           latest=$(gh release view --repo FortAwesome/Font-Awesome --json tagName --jq .tagName)
